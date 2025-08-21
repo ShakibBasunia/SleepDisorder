@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Disorder Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e9f5fc; /* Light blue background */
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: #0066cc; /* Blue color for the heading */
+        }
+        label {
+            margin: 10px 0;
+            display: block;
+            color: #333; /* Dark grey for labels */
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px;
+            border: 1px solid #ccd6e4; /* Light blue-grey border */
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #0099cc; /* Bright blue button */
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0077b3; /* Darker blue on hover */
+        }
+        h2 {
+            text-align: center;
+            color: #0066cc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Predict Sleep Disorder</h1>
+    <!-- Form to collect user inputs -->
+    <form action="/predict" method="POST">
+        <!-- Age -->
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br>
+
+        <!-- Gender -->
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="0">Male</option>
+            <option value="1">Female</option>
+            <option value="2">Other</option>
+        </select><br>
+
+        <!-- Occupation -->
+        <label for="occupation">Occupation:</label>
+        <select id="occupation" name="occupation" required>
+            <option value="0">Teacher</option>
+            <option value="1">Engineer</option>
+            <option value="2">Doctor</option>
+            <option value="3">Manager</option>
+            <option value="4">Student</option>
+        </select><br>
+
+        <!-- Sleep Duration -->
+        <label for="sleep_duration">Sleep Duration (hours):</label>
+        <input type="number" id="sleep_duration" name="sleep_duration" required><br>
+
+        <!-- Quality of Sleep -->
+        <label for="quality_of_sleep">Quality of Sleep (1-10):</label>
+        <input type="number" id="quality_of_sleep" name="quality_of_sleep" min="1" max="10" required><br>
+
+        <!-- Physical Activity -->
+        <label for="physical_activity">Physical Activity (hrs/week):</label>
+        <input type="number" id="physical_activity" name="physical_activity" required><br>
+
+        <!-- Stress Level -->
+        <label for="stress_level">Stress Level (1-10):</label>
+        <input type="number" id="stress_level" name="stress_level" min="1" max="10" required><br>
+
+        <!-- BMI -->
+        <label for="bmi">BMI:</label>
+        <input type="number" id="bmi" name="bmi" required><br>
+
+        <!-- Heart Rate -->
+        <label for="heart_rate">Heart Rate (bpm):</label>
+        <input type="number" id="heart_rate" name="heart_rate" required><br>
+
+        <!-- Daily Steps -->
+        <label for="daily_steps">Daily Steps:</label>
+        <input type="number" id="daily_steps" name="daily_steps" required><br>
+
+        <!-- Sleep Efficiency -->
+        <label for="sleep_efficiency">Sleep Efficiency (%):</label>
+        <input type="number" id="sleep_efficiency" name="sleep_efficiency" required><br>
+
+        <!-- BMI Category -->
+        <label for="bmi_category">BMI Category:</label>
+        <select id="bmi_category" name="bmi_category" required>
+            <option value="0">Normal</option>
+            <option value="1">Overweight</option>
+            <option value="2">Obese</option>
+        </select><br><br>
+
+        <!-- Submit button -->
+        <input type="submit" value="Predict">
+    </form>
+
+    <!-- Display prediction result -->
+    <h2>{{ prediction_text }}</h2>
+</div>
+
+</body>
+</html>
